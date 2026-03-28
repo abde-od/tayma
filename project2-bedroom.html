@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Bedroom Design - Project Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        .gallery-item {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(147, 51, 234, 0.3));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.4);
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+        .feature-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1));
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+        .feature-box:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.6);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-gray-100">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-slate-900/95 backdrop-blur-md z-50 border-b border-blue-500/20">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="tym.html" class="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                    </svg>
+                    <span>Back to Portfolio</span>
+                </a>
+                <h1 class="text-xl font-bold">Modern Bedroom Design</h1>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 3D Background -->
+    <canvas id="bg-canvas" class="fixed inset-0 w-full h-full z-0" style="pointer-events: none;"></canvas>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <div class="fade-in text-center mb-8">
+                <div class="inline-flex gap-2 mb-4">
+                    <span class="px-4 py-1 bg-blue-500/20 border border-blue-500/50 rounded-full text-blue-400 text-sm">Residential</span>
+                    <span class="px-4 py-1 bg-green-500/20 border border-green-500/50 rounded-full text-green-400 text-sm">Smart Home</span>
+                    <span class="px-4 py-1 bg-purple-500/20 border border-purple-500/50 rounded-full text-purple-400 text-sm">Interior Design</span>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-green-400 text-transparent bg-clip-text">
+                    Modern Bedroom Design
+                </h1>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Contemporary bedroom design with integrated smart systems, optimized lighting layout, and space-efficient furniture arrangement
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Image -->
+    <section class="pb-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <div class="rounded-2xl overflow-hidden border border-blue-500/30 shadow-2xl shadow-blue-500/20">
+                <img src="p10.jpeg" 
+                     alt="Bedroom Main View" 
+                     class="w-full h-auto">
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Stats -->
+    <section class="py-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid md:grid-cols-4 gap-6 mb-12">
+                <div class="feature-box rounded-xl p-6 text-center">
+                    <div class="text-3xl mb-2">🛏️</div>
+                    <h3 class="font-bold text-lg mb-2">Room Type</h3>
+                    <p class="text-gray-400">Master Bedroom</p>
+                </div>
+                <div class="feature-box rounded-xl p-6 text-center">
+                    <div class="text-3xl mb-2">📐</div>
+                    <h3 class="font-bold text-lg mb-2">Area</h3>
+                    <p class="text-gray-400">35 m²</p>
+                </div>
+                <div class="feature-box rounded-xl p-6 text-center">
+                    <div class="text-3xl mb-2">🎨</div>
+                    <h3 class="font-bold text-lg mb-2">Style</h3>
+                    <p class="text-gray-400">Modern Minimalist</p>
+                </div>
+                <div class="feature-box rounded-xl p-6 text-center">
+                    <div class="text-3xl mb-2">✅</div>
+                    <h3 class="font-bold text-lg mb-2">Status</h3>
+                    <p class="text-gray-400">Completed</p>
+                </div>
+            </div>
+
+            <div class="bg-slate-800/50 border border-blue-500/20 rounded-2xl p-8 md:p-12">
+                <h2 class="text-3xl font-bold mb-6">Project Description</h2>
+                <div class="space-y-4 text-gray-300 leading-relaxed">
+                    <p>
+                        This modern bedroom design creates a serene sanctuary combining functionality with contemporary aesthetics. The space features a calming blue and gray color palette, complemented by natural wood accents and smart lighting solutions.
+                    </p>
+                    <p>
+                        The design incorporates custom-built wardrobes with sleek black oval cutouts that add visual interest while providing ample storage. A dedicated study area with floating desk and modern task lighting creates a productive workspace within the bedroom.
+                    </p>
+                    <p>
+                        Strategic placement of ambient and task lighting creates multiple mood settings, from bright and energizing for morning routines to soft and relaxing for evening wind-down. Smart home integration allows for voice-controlled lighting and climate management.
+                    </p>
+                </div>
+
+                <h3 class="text-2xl font-bold mt-8 mb-4">Design Highlights</h3>
+                <ul class="space-y-3 text-gray-300">
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                        </svg>
+                        <span>Integrated smart home system with app and voice control</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                        </svg>
+                        <span>Custom moon-shaped floating shelf combining form and function</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                        </svg>
+                        <span>Multi-zone LED lighting with adjustable color temperature</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                        </svg>
+                        <span>Space-efficient wardrobe design maximizing storage capacity</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Gallery -->
+    <section class="py-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-4xl font-bold mb-8 text-center">Design Gallery</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="gallery-item rounded-xl overflow-hidden border border-blue-500/30">
+                    <img src="p11.jpeg" 
+                         alt="Bedroom View 1" 
+                         class="w-full h-96 object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden border border-blue-500/30">
+                    <img src="p12.jpeg" 
+                         alt="Bedroom View 2" 
+                         class="w-full h-96 object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden border border-blue-500/30">
+                    <img src="p13.jpeg" 
+                         alt="Study Area" 
+                         class="w-full h-96 object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden border border-blue-500/30">
+                    <img src="p10.jpeg" 
+                         alt="Wardrobe Detail" 
+                         class="w-full h-96 object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Details -->
+    <section class="py-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <div class="bg-slate-800/50 border border-blue-500/20 rounded-2xl p-8 md:p-12">
+                <h2 class="text-3xl font-bold mb-6">Technical Information</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-blue-400">Design Tools</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li>• AutoCAD - Floor planning and electrical layouts</li>
+                            <li>• SketchUp - 3D modeling and space planning</li>
+                            <li>• Lumion - Photorealistic rendering</li>
+                            <li>• Illustrator - Material boards and specifications</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-green-400">Smart Features</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li>• Voice-activated lighting control</li>
+                            <li>• Automated climate management</li>
+                            <li>• Wireless charging stations</li>
+                            <li>• Smart window blinds</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="text-xl font-bold mb-4 text-purple-400">Color Palette & Materials</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-slate-700/30 border border-blue-500/20 rounded-lg p-4">
+                        <div class="w-full h-16 bg-blue-600 rounded mb-2"></div>
+                        <h4 class="font-semibold text-sm">Slate Blue</h4>
+                        <p class="text-xs text-gray-400">#4A6FA5</p>
+                    </div>
+                    <div class="bg-slate-700/30 border border-blue-500/20 rounded-lg p-4">
+                        <div class="w-full h-16 bg-gray-400 rounded mb-2"></div>
+                        <h4 class="font-semibold text-sm">Dove Gray</h4>
+                        <p class="text-xs text-gray-400">#A6A6A6</p>
+                    </div>
+                    <div class="bg-slate-700/30 border border-blue-500/20 rounded-lg p-4">
+                        <div class="w-full h-16 bg-amber-700 rounded mb-2"></div>
+                        <h4 class="font-semibold text-sm">Natural Oak</h4>
+                        <p class="text-xs text-gray-400">Wood Accent</p>
+                    </div>
+                    <div class="bg-slate-700/30 border border-blue-500/20 rounded-lg p-4">
+                        <div class="w-full h-16 bg-gray-900 rounded mb-2"></div>
+                        <h4 class="font-semibold text-sm">Charcoal</h4>
+                        <p class="text-xs text-gray-400">#2D2D2D</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 px-6 relative z-10">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="text-4xl font-bold mb-4">Ready to Transform Your Space?</h2>
+            <p class="text-gray-400 mb-8">Let's create your dream bedroom together</p>
+            <div class="flex gap-4 justify-center flex-wrap">
+                <a href="tym.html#contact" class="bg-gradient-to-r from-blue-500 to-green-600 text-white px-8 py-3 rounded-full hover:shadow-lg hover:shadow-blue-500/50 transition">
+                    Start Your Project
+                </a>
+                <a href="tym.html#projects" class="border border-blue-500 text-blue-400 px-8 py-3 rounded-full hover:bg-blue-500/10 transition">
+                    Explore More Designs
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <button class="absolute top-8 right-8 text-white text-4xl hover:text-blue-400 transition">&times;</button>
+        <img id="lightbox-img" src="" alt="">
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-blue-500/20 py-8 px-6 relative z-10">
+        <div class="container mx-auto text-center">
+            <p class="text-gray-400">
+                &copy; 2026 Engineering Portfolio. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // 3D Background Animation
+        const canvas = document.getElementById('bg-canvas');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        camera.position.z = 5;
+
+        // Create rotating sphere
+        const geometry = new THREE.SphereGeometry(1, 32, 32);
+        const material = new THREE.MeshPhongMaterial({
+            color: 0x22c55e,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.3
+        });
+        const sphere = new THREE.Mesh(geometry, material);
+        scene.add(sphere);
+
+        // Particles
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 600;
+        const posArray = new Float32Array(particlesCount * 3);
+        
+        for(let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 10;
+        }
+        
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.02,
+            color: 0x3b82f6,
+            transparent: true,
+            opacity: 0.5
+        });
+        
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
+
+        // Lights
+        const light1 = new THREE.PointLight(0x3b82f6, 1);
+        light1.position.set(5, 5, 5);
+        scene.add(light1);
+
+        const light2 = new THREE.PointLight(0x22c55e, 1);
+        light2.position.set(-5, -5, 5);
+        scene.add(light2);
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+            sphere.rotation.x += 0.002;
+            sphere.rotation.y += 0.003;
+            particlesMesh.rotation.y += 0.0005;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Gallery Lightbox
+        const galleryItems = document.querySelectorAll('.gallery-item img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                lightbox.classList.add('active');
+                lightboxImg.src = item.src;
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+        }
+    </script>
+</body>
+</html>

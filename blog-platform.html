@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Platform - Dynamic Blogging Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #000000 0%, #3a0f1b 60%, #5c1a2a 100%);
+        }
+        .gradient-bg button {
+            background: transparent;
+  border: 2px solid #C9A227;
+  color: #C9A227;
+        }
+        
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hover-scale {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .blog-card {
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .blog-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        .blog-card img {
+            transition: transform 0.5s ease;
+        }
+        
+        .category-badge {
+            transition: all 0.3s ease;
+        }
+        
+        .category-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-blog text-3xl gradient-text"></i>
+                    <span class="text-2xl font-bold gradient-text">BlogHub</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-cyan-600 font-medium transition">Home</a>
+                    <a href="#posts" class="text-gray-700 hover:text-cyan-600 font-medium transition">Posts</a>
+                    <a href="#categories" class="text-gray-700 hover:text-cyan-600 font-medium transition">Categories</a>
+                    <a href="#about" class="text-gray-700 hover:text-cyan-600 font-medium transition">About</a>
+                    <a href="#contact" class="text-gray-700 hover:text-cyan-600 font-medium transition">Contact</a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-4">
+                    <button class="text-gray-700 hover:text-cyan-600 transition">
+                        <i class="fas fa-search text-xl"></i>
+                    </button>
+                    <button class="gradient-bg text-white px-6 py-2 rounded-full font-medium hover:opacity-90 transition">
+                        Write Post
+                    </button>
+                </div>
+                
+                <button class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg py-20 md:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
+                Welcome to BlogHub
+            </h1>
+            <p class="text-xl md:text-2xl text-cyan-100 mb-8 max-w-3xl mx-auto">
+                Dynamic blogging platform with CMS, categories, and commenting system. Share your stories with the world.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-white text-cyan-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition shadow-lg">
+                    Start Reading
+                </button>
+                <button class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-cyan-600 transition">
+                    Create Account
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Browse Categories</h2>
+                <p class="text-gray-600 text-lg">Explore content tailored to your interests</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <div class="category-badge gradient-bg text-white p-6 rounded-xl text-center cursor-pointer">
+                    <i class="fas fa-code text-3xl mb-3"></i>
+                    <h3 class="font-semibold">Technology</h3>
+                    <p class="text-sm text-cyan-100 mt-1">245 posts</p>
+                </div>
+                <div class="category-badge bg-blue-500 text-white p-6 rounded-xl text-center cursor-pointer">
+                    <i class="fas fa-palette text-3xl mb-3"></i>
+                    <h3 class="font-semibold">Design</h3>
+                    <p class="text-sm text-blue-100 mt-1">189 posts</p>
+                </div>
+                <div class="category-badge bg-green-500 text-white p-6 rounded-xl text-center cursor-pointer">
+                    <i class="fas fa-leaf text-3xl mb-3"></i>
+                    <h3 class="font-semibold">Lifestyle</h3>
+                    <p class="text-sm text-green-100 mt-1">312 posts</p>
+                </div>
+                <div class="category-badge bg-red-500 text-white p-6 rounded-xl text-center cursor-pointer">
+                    <i class="fas fa-utensils text-3xl mb-3"></i>
+                    <h3 class="font-semibold">Food</h3>
+                    <p class="text-sm text-red-100 mt-1">156 posts</p>
+                </div>
+                <div class="category-badge bg-yellow-500 text-white p-6 rounded-xl text-center cursor-pointer">
+                    <i class="fas fa-plane text-3xl mb-3"></i>
+                    <h3 class="font-semibold">Travel</h3>
+                    <p class="text-sm text-yellow-100 mt-1">278 posts</p>
+                </div>
+                <div class="category-badge bg-pink-500 text-white p-6 rounded-xl text-center cursor-pointer">
+                    <i class="fas fa-heart text-3xl mb-3"></i>
+                    <h3 class="font-semibold">Health</h3>
+                    <p class="text-sm text-pink-100 mt-1">203 posts</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Post -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="gradient-text text-sm font-bold uppercase tracking-wider">Featured Post</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Editor's Pick</h2>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover-scale">
+                <div class="grid md:grid-cols-2 gap-0">
+                    <div class="h-64 md:h-auto bg-gradient-to-br from-cyan-400 to-blue-400 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800" alt="Featured" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8 md:p-12 flex flex-col justify-center">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="bg-cyan-100 text-cyan-600 px-4 py-1 rounded-full text-sm font-semibold">Technology</span>
+                            <span class="text-gray-500 text-sm">5 min read</span>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-900 mb-4">The Future of Web Development in 2026</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">Explore the cutting-edge technologies and frameworks that are reshaping how we build modern web applications. From AI-powered tools to advanced CSS features.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-blue-400"></div>
+                                <div>
+                                    <p class="font-semibold text-gray-900">Sarah Johnson</p>
+                                    <p class="text-sm text-gray-500">Feb 24, 2026</p>
+                                </div>
+                            </div>
+                            <a href="blog-post-web-development.html" class="gradient-bg text-white px-6 py-2 rounded-full font-medium hover:opacity-90 transition">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Posts Grid -->
+    <section id="posts" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Latest Posts</h2>
+                <p class="text-gray-600 text-lg">Discover our most recent articles</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog Card 1 -->
+                <article class="blog-card bg-white rounded-xl shadow-lg overflow-hidden hover-scale">
+                    <div class="h-48 bg-gradient-to-br from-blue-400 to-cyan-400 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600" alt="Blog" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-semibold">Design</span>
+                            <span class="text-gray-500 text-sm">4 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Mastering Minimalist Design Principles</h3>
+                        <p class="text-gray-600 mb-4">Learn how to create stunning designs with less clutter and more impact using modern minimalist approaches.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-cyan-400"></div>
+                                <span class="text-sm text-gray-700 font-medium">Alex Chen</span>
+                            </div>
+                            <a href="blog-post-minimalist-design.html" class="text-cyan-600 font-medium hover:text-cyan-700 transition">
+                                Read <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Card 2 -->
+                <article class="blog-card bg-white rounded-xl shadow-lg overflow-hidden hover-scale">
+                    <div class="h-48 bg-gradient-to-br from-green-400 to-emerald-400 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=600" alt="Blog" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-semibold">Technology</span>
+                            <span class="text-gray-500 text-sm">6 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Getting Started with Machine Learning</h3>
+                        <p class="text-gray-600 mb-4">A comprehensive guide to understanding the fundamentals of ML and how to apply them in real-world projects.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-green-400 to-emerald-400"></div>
+                                <span class="text-sm text-gray-700 font-medium">Mike Davis</span>
+                            </div>
+                            <a href="blog-post-machine-learning.html" class="text-cyan-600 font-medium hover:text-cyan-700 transition">
+                                Read <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Card 3 -->
+                <article class="blog-card bg-white rounded-xl shadow-lg overflow-hidden hover-scale">
+                    <div class="h-48 bg-gradient-to-br from-orange-400 to-red-400 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600" alt="Blog" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs font-semibold">Food</span>
+                            <span class="text-gray-500 text-sm">3 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">10 Quick Healthy Recipes for Busy Days</h3>
+                        <p class="text-gray-600 mb-4">Delicious and nutritious meals that you can prepare in under 30 minutes without compromising on taste.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-red-400"></div>
+                                <span class="text-sm text-gray-700 font-medium">Emma Wilson</span>
+                            </div>
+                            <a href="blog-post-healthy-recipes.html" class="text-cyan-600 font-medium hover:text-cyan-700 transition">
+                                Read <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Card 4 -->
+                <article class="blog-card bg-white rounded-xl shadow-lg overflow-hidden hover-scale">
+                    <div class="h-48 bg-gradient-to-br from-orange-400 to-amber-400 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600" alt="Blog" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-xs font-semibold">Travel</span>
+                            <span class="text-gray-500 text-sm">7 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Hidden Gems in Southeast Asia</h3>
+                        <p class="text-gray-600 mb-4">Discover breathtaking destinations off the beaten path that offer authentic cultural experiences.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-amber-400"></div>
+                                <span class="text-sm text-gray-700 font-medium">Lisa Park</span>
+                            </div>
+                            <a href="blog-post-southeast-asia.html" class="text-cyan-600 font-medium hover:text-cyan-700 transition">
+                                Read <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Card 5 -->
+                <article class="blog-card bg-white rounded-xl shadow-lg overflow-hidden hover-scale">
+                    <div class="h-48 bg-gradient-to-br from-indigo-400 to-blue-400 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600" alt="Blog" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="bg-pink-100 text-pink-600 px-3 py-1 rounded-full text-xs font-semibold">Health</span>
+                            <span class="text-gray-500 text-sm">5 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Mindfulness Meditation for Beginners</h3>
+                        <p class="text-gray-600 mb-4">Start your journey to mental wellness with these simple meditation techniques for daily practice.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-400 to-blue-400"></div>
+                                <span class="text-sm text-gray-700 font-medium">David Lee</span>
+                            </div>
+                            <a href="blog-post-meditation.html" class="text-cyan-600 font-medium hover:text-cyan-700 transition">
+                                Read <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Card 6 -->
+                <article class="blog-card bg-white rounded-xl shadow-lg overflow-hidden hover-scale">
+                    <div class="h-48 bg-gradient-to-br from-teal-400 to-green-400 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1483817101829-339b08e8d83f?w=600" alt="Blog" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-semibold">Lifestyle</span>
+                            <span class="text-gray-500 text-sm">4 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Sustainable Living Tips for 2026</h3>
+                        <p class="text-gray-600 mb-4">Simple changes you can make today to reduce your carbon footprint and live more sustainably.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-teal-400 to-green-400"></div>
+                                <span class="text-sm text-gray-700 font-medium">Rachel Green</span>
+                            </div>
+                            <a href="blog-post-sustainable-living.html" class="text-cyan-600 font-medium hover:text-cyan-700 transition">
+                                Read <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="gradient-bg text-white px-8 py-3 rounded-full font-semibold hover:opacity-90 transition">
+                    Load More Posts
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 gradient-bg">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <i class="fas fa-envelope text-5xl text-white mb-6"></i>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Subscribe to Our Newsletter</h2>
+            <p class="text-cyan-100 text-lg mb-8">Get the latest articles delivered straight to your inbox every week.</p>
+            <div class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+                <input type="email" placeholder="Enter your email address" class="flex-1 px-6 py-4 rounded-full focus:outline-none focus:ring-2 focus:ring-white">
+                <button class="bg-white text-cyan-600 px-8 py-4 rounded-full font-bold hover:bg-gray-100 transition">
+                    Subscribe
+                </button>
+            </div>
+            <p class="text-cyan-200 text-sm mt-4">No spam, unsubscribe anytime.</p>
+        </div>
+    </section>
+
+    <!-- Comments Section Example -->
+    <section id="comments" class="py-16 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8">Comments <span class="text-gray-500 text-2xl">(12)</span></h2>
+            
+            <!-- Comment Form -->
+            <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Leave a Comment</h3>
+                <textarea placeholder="Share your thoughts..." rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 mb-4"></textarea>
+                <div class="grid md:grid-cols-2 gap-4 mb-4">
+                    <input type="text" placeholder="Your Name" class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                    <input type="email" placeholder="Your Email" class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                </div>
+                <button class="gradient-bg text-white px-8 py-3 rounded-full font-semibold hover:opacity-90 transition">
+                    Post Comment
+                </button>
+            </div>
+
+            <!-- Comment List -->
+            <div class="space-y-6">
+                <!-- Comment 1 -->
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-blue-400 flex-shrink-0"></div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between mb-2">
+                                <h4 class="font-bold text-gray-900">John Smith</h4>
+                                <span class="text-sm text-gray-500">2 days ago</span>
+                            </div>
+                            <p class="text-gray-600 mb-3">This is an excellent article! The insights on modern web development are spot on. I've been implementing some of these techniques and the results are amazing.</p>
+                            <div class="flex items-center gap-4">
+                                <button class="text-cyan-600 hover:text-cyan-700 text-sm font-medium">
+                                    <i class="fas fa-thumbs-up mr-1"></i> Like (24)
+                                </button>
+                                <button class="text-cyan-600 hover:text-cyan-700 text-sm font-medium">
+                                    <i class="fas fa-reply mr-1"></i> Reply
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comment 2 -->
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-cyan-400 flex-shrink-0"></div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between mb-2">
+                                <h4 class="font-bold text-gray-900">Maria Garcia</h4>
+                                <span class="text-sm text-gray-500">5 days ago</span>
+                            </div>
+                            <p class="text-gray-600 mb-3">Great read! Would love to see more content about responsive design patterns and accessibility best practices.</p>
+                            <div class="flex items-center gap-4">
+                                <button class="text-cyan-600 hover:text-cyan-700 text-sm font-medium">
+                                    <i class="fas fa-thumbs-up mr-1"></i> Like (15)
+                                </button>
+                                <button class="text-cyan-600 hover:text-cyan-700 text-sm font-medium">
+                                    <i class="fas fa-reply mr-1"></i> Reply
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comment 3 -->
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-emerald-400 flex-shrink-0"></div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between mb-2">
+                                <h4 class="font-bold text-gray-900">James Anderson</h4>
+                                <span class="text-sm text-gray-500">1 week ago</span>
+                            </div>
+                            <p class="text-gray-600 mb-3">Thanks for sharing this valuable information. The examples are clear and easy to follow. Keep up the great work!</p>
+                            <div class="flex items-center gap-4">
+                                <button class="text-cyan-600 hover:text-cyan-700 text-sm font-medium">
+                                    <i class="fas fa-thumbs-up mr-1"></i> Like (8)
+                                </button>
+                                <button class="text-cyan-600 hover:text-cyan-700 text-sm font-medium">
+                                    <i class="fas fa-reply mr-1"></i> Reply
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-8">
+                <button class="text-cyan-600 font-semibold hover:text-cyan-700 transition">
+                    Load More Comments
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">About BlogHub</h2>
+            <p class="text-gray-600 text-lg leading-relaxed mb-8">
+                BlogHub is a dynamic blogging platform designed to empower writers and content creators. 
+                With our intuitive CMS, category system, and engaging commenting features, we make it easy 
+                to share your stories and connect with readers from around the world. Join our growing 
+                community of passionate writers today.
+            </p>
+            <div class="grid md:grid-cols-3 gap-8 mt-12">
+                <div class="text-center">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">50K+</h3>
+                    <p class="text-gray-600">Active Writers</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-file-alt text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">1M+</h3>
+                    <p class="text-gray-600">Published Posts</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-comments text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">5M+</h3>
+                    <p class="text-gray-600">Monthly Readers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-blog text-2xl gradient-text"></i>
+                        <span class="text-xl font-bold">BlogHub</span>
+                    </div>
+                    <p class="text-gray-400">Empowering writers and readers to connect through meaningful stories.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Write Post</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Categories</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Technology</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Design</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Lifestyle</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Travel</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-cyan-600 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-cyan-600 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-cyan-600 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-cyan-600 transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 BlogHub. All rights reserved. Built with <i class="fas fa-heart text-red-500"></i> using Tailwind CSS</p>
+            </div>
+        </footer>
+    </footer>
+
+</body>
+</html>

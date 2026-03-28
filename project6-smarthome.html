@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home Integration - Project Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in { animation: fadeIn 0.6s ease-out; }
+        .feature-box {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.1));
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            transition: all 0.3s ease;
+        }
+        .feature-box:hover {
+            transform: translateY(-5px);
+            border-color: rgba(16, 185, 129, 0.6);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+        .video-container {
+            position: relative;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.1));
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-gray-100">
+
+    <nav class="fixed w-full bg-slate-900/95 backdrop-blur-md z-50 border-b border-green-500/20">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="tym.html" class="flex items-center space-x-2 text-green-400 hover:text-green-300 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                    </svg>
+                    <span>Back to Portfolio</span>
+                </a>
+                <h1 class="text-xl font-bold">Smart Home Integration</h1>
+            </div>
+        </div>
+    </nav>
+
+    <canvas id="bg-canvas" class="fixed inset-0 w-full h-full z-0" style="pointer-events: none;"></canvas>
+
+    <section class="pt-32 pb-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <div class="fade-in text-center mb-8">
+                <div class="inline-flex gap-2 mb-4">
+                    <span class="px-4 py-1 bg-green-500/20 border border-green-500/50 rounded-full text-green-400 text-sm">Smart Systems</span>
+                    <span class="px-4 py-1 bg-blue-500/20 border border-blue-500/50 rounded-full text-blue-400 text-sm">IoT</span>
+                    <span class="px-4 py-1 bg-purple-500/20 border border-purple-500/50 rounded-full text-purple-400 text-sm">Automation</span>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-green-400 to-emerald-400 text-transparent bg-clip-text">
+                    Smart Home Integration
+                </h1>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Complete home automation system with voice control, energy management, and integrated security features
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="pb-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <div class="rounded-2xl overflow-hidden border border-green-500/30 shadow-2xl shadow-green-500/20 video-container">
+                <div class="aspect-video flex items-center justify-center">
+                    <div class="text-center">
+                        <div class="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 cursor-pointer hover:bg-green-500/30 transition">
+                            <svg class="w-12 h-12 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+                            </svg>
+                        </div>
+                        <p class="text-gray-400 text-lg font-semibold">Watch Project Demonstration</p>
+                        <p class="text-sm text-gray-500 mt-2">Click to play full walkthrough video</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="feature-box rounded-xl p-6 text-center">
+                    <div class="text-3xl mb-2">🏠</div>
+                    <h3 class="font-bold text-lg mb-2">Property Type</h3>
+                    <p class="text-gray-400">Residential Home</p>
+                </div>
+                <div class="feature-box rounded-xl p-6 text-center">
+                    <div class="text-3xl mb-2">🔌</div>
+                    <h3 class="font-bold text-lg mb-2">Smart Devices</h3>
+                    <p class="text-gray-400">50+ Connected</p>
+                </div>
+                <div class="feature-box rounded-xl p-6 text-center">
+                    <div class="text-3xl mb-2">🎙️</div>
+                    <h3 class="font-bold text-lg mb-2">Voice Control</h3>
+                    <p class="text-gray-400">Multi-Platform</p>
+                </div>
+                <div class="feature-box rounded-xl p-6 text-center">
+                    <div class="text-3xl mb-2">📱</div>
+                    <h3 class="font-bold text-lg mb-2">App Control</h3>
+                    <p class="text-gray-400">iOS & Android</p>
+                </div>
+            </div>
+
+            <div class="bg-slate-800/50 border border-green-500/20 rounded-2xl p-8 md:p-12">
+                <h2 class="text-3xl font-bold mb-6">System Overview</h2>
+                <div class="space-y-4 text-gray-300 leading-relaxed">
+                    <p>
+                        This comprehensive smart home system transforms a traditional residence into an intelligent, responsive living environment. The integration seamlessly connects lighting, climate control, security, entertainment, and energy management into a unified platform.
+                    </p>
+                    <p>
+                        The system utilizes a central hub that communicates with all devices via Wi-Fi, Zigbee, and Z-Wave protocols. This multi-protocol approach ensures compatibility with a wide range of devices while maintaining reliability and responsiveness.
+                    </p>
+                    <p>
+                        Voice assistants from multiple platforms are integrated, allowing residents to control their home using natural language commands. Custom automation routines adapt to lifestyle patterns, automatically adjusting settings based on time of day, occupancy, and personal preferences.
+                    </p>
+                </div>
+
+                <h3 class="text-2xl font-bold mt-8 mb-4">Integrated Systems</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-slate-700/30 border border-green-500/20 rounded-lg p-6">
+                        <h4 class="font-bold text-lg mb-3 text-green-400 flex items-center gap-2">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.476.859h4.002z"/>
+                            </svg>
+                            Smart Lighting
+                        </h4>
+                        <ul class="space-y-2 text-sm text-gray-400">
+                            <li>• 30+ Philips Hue bulbs and strips</li>
+                            <li>• Motion-activated pathway lighting</li>
+                            <li>• Circadian rhythm automation</li>
+                            <li>• Scene-based control</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-700/30 border border-green-500/20 rounded-lg p-6">
+                        <h4 class="font-bold text-lg mb-3 text-blue-400 flex items-center gap-2">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z"/>
+                            </svg>
+                            Climate Control
+                        </h4>
+                        <ul class="space-y-2 text-sm text-gray-400">
+                            <li>• Smart thermostat with learning</li>
+                            <li>• Zone-based temperature control</li>
+                            <li>• Energy usage tracking</li>
+                            <li>• Weather-adaptive settings</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-700/30 border border-green-500/20 rounded-lg p-6">
+                        <h4 class="font-bold text-lg mb-3 text-purple-400 flex items-center gap-2">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                            Security System
+                        </h4>
+                        <ul class="space-y-2 text-sm text-gray-400">
+                            <li>• Smart door locks with codes</li>
+                            <li>• Motion sensor network</li>
+                            <li>• HD security cameras</li>
+                            <li>• Mobile alert system</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-700/30 border border-green-500/20 rounded-lg p-6">
+                        <h4 class="font-bold text-lg mb-3 text-pink-400 flex items-center gap-2">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z"/>
+                            </svg>
+                            Entertainment
+                        </h4>
+                        <ul class="space-y-2 text-sm text-gray-400">
+                            <li>• Multi-room audio system</li>
+                            <li>• Smart TV integration</li>
+                            <li>• Automated blinds/curtains</li>
+                            <li>• Scene-synchronized lighting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-4xl font-bold mb-8 text-center">System Features</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-slate-800/50 border border-green-500/20 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Energy Management</h3>
+                    <p class="text-gray-400 text-sm">Real-time monitoring and automated optimization reduce energy costs by up to 30%</p>
+                </div>
+
+                <div class="bg-slate-800/50 border border-green-500/20 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Remote Access</h3>
+                    <p class="text-gray-400 text-sm">Control your entire home from anywhere using mobile app or web interface</p>
+                </div>
+
+                <div class="bg-slate-800/50 border border-green-500/20 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Custom Routines</h3>
+                    <p class="text-gray-400 text-sm">Create personalized automation scenes triggered by time, location, or events</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <div class="bg-slate-800/50 border border-green-500/20 rounded-2xl p-8 md:p-12">
+                <h2 class="text-3xl font-bold mb-6">Technical Specifications</h2>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-green-400">Control Hub</h3>
+                        <ul class="space-y-2 text-gray-300 text-sm">
+                            <li>• Home Assistant server</li>
+                            <li>• Node-RED automation</li>
+                            <li>• MQTT broker</li>
+                            <li>• Zigbee2MQTT gateway</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-blue-400">Network</h3>
+                        <ul class="space-y-2 text-gray-300 text-sm">
+                            <li>• Mesh Wi-Fi system</li>
+                            <li>• VLAN segmentation</li>
+                            <li>• IoT network isolation</li>
+                            <li>• Gigabit backbone</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-purple-400">Integration</h3>
+                        <ul class="space-y-2 text-gray-300 text-sm">
+                            <li>• Google Assistant</li>
+                            <li>• Amazon Alexa</li>
+                            <li>• Apple HomeKit</li>
+                            <li>• IFTTT webhooks</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6 relative z-10">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="text-4xl font-bold mb-4">Ready to Automate Your Home?</h2>
+            <p class="text-gray-400 mb-8">Let's create an intelligent living environment tailored to your lifestyle</p>
+            <div class="flex gap-4 justify-center flex-wrap">
+                <a href="tym.html#contact" class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-3 rounded-full hover:shadow-lg hover:shadow-green-500/50 transition">
+                    Get Started
+                </a>
+                <a href="tym.html#projects" class="border border-green-500 text-green-400 px-8 py-3 rounded-full hover:bg-green-500/10 transition">
+                    View More Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 border-t border-green-500/20 py-8 px-6 relative z-10">
+        <div class="container mx-auto text-center">
+            <p class="text-gray-400">&copy; 2026 Engineering Portfolio</p>
+        </div>
+    </footer>
+
+    <script>
+        const canvas = document.getElementById('bg-canvas');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.position.z = 5;
+
+        // Create network nodes
+        const nodes = [];
+        for(let i = 0; i < 10; i++) {
+            const geometry = new THREE.SphereGeometry(0.1, 16, 16);
+            const material = new THREE.MeshPhongMaterial({ color: 0x10b981, transparent: true, opacity: 0.6 });
+            const node = new THREE.Mesh(geometry, material);
+            node.position.set(
+                (Math.random() - 0.5) * 8,
+                (Math.random() - 0.5) * 8,
+                (Math.random() - 0.5) * 4
+            );
+            scene.add(node);
+            nodes.push(node);
+        }
+
+        const light = new THREE.PointLight(0x10b981, 1);
+        light.position.set(5, 5, 5);
+        scene.add(light);
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+            nodes.forEach((node, i) => {
+                node.position.y += Math.sin(Date.now() * 0.001 + i) * 0.005;
+                node.rotation.x += 0.002;
+                node.rotation.y += 0.003;
+            });
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
+</body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Office Space Planning - Project Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        .gallery-item {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(251, 191, 36, 0.4);
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+        .info-card {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(245, 158, 11, 0.1));
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            transition: all 0.3s ease;
+        }
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(251, 191, 36, 0.6);
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-gray-100">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-slate-900/95 backdrop-blur-md z-50 border-b border-yellow-500/20">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="tym.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                    </svg>
+                    <span>Back to Portfolio</span>
+                </a>
+                <h1 class="text-xl font-bold">Office Space Planning</h1>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 3D Background -->
+    <canvas id="bg-canvas" class="fixed inset-0 w-full h-full z-0" style="pointer-events: none;"></canvas>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <div class="fade-in text-center mb-8">
+                <div class="inline-flex gap-2 mb-4">
+                    <span class="px-4 py-1 bg-blue-500/20 border border-blue-500/50 rounded-full text-blue-400 text-sm">Commercial</span>
+                    <span class="px-4 py-1 bg-yellow-500/20 border border-yellow-500/50 rounded-full text-yellow-400 text-sm">AutoCAD</span>
+                    <span class="px-4 py-1 bg-purple-500/20 border border-purple-500/50 rounded-full text-purple-400 text-sm">Workspace Design</span>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-yellow-400 to-orange-400 text-transparent bg-clip-text">
+                    Office Space Planning
+                </h1>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Efficient office layout design with optimized electrical distribution, modern aesthetics, and collaborative workspace solutions
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Image -->
+    <section class="pb-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <div class="rounded-2xl overflow-hidden border border-yellow-500/30 shadow-2xl shadow-yellow-500/20">
+                <img src="tm1.jpg" 
+                     alt="Office Main View" 
+                     class="w-full h-auto">
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section class="py-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div class="info-card rounded-xl p-6 text-center">
+                    <div class="text-3xl mb-2">🏢</div>
+                    <h3 class="font-bold text-lg mb-2">Space Type</h3>
+                    <p class="text-gray-400">Corporate Office</p>
+                </div>
+                <div class="info-card rounded-xl p-6 text-center">
+                    <div class="text-3xl mb-2">👥</div>
+                    <h3 class="font-bold text-lg mb-2">Capacity</h3>
+                    <p class="text-gray-400">45-50 Employees</p>
+                </div>
+                <div class="info-card rounded-xl p-6 text-center">
+                    <div class="text-3xl mb-2">📊</div>
+                    <h3 class="font-bold text-lg mb-2">Total Area</h3>
+                    <p class="text-gray-400">420 m²</p>
+                </div>
+            </div>
+
+            <div class="bg-slate-800/50 border border-yellow-500/20 rounded-2xl p-8 md:p-12">
+                <h2 class="text-3xl font-bold mb-6">Project Overview</h2>
+                <div class="space-y-4 text-gray-300 leading-relaxed">
+                    <p>
+                        This comprehensive office space design maximizes productivity and collaboration while maintaining a modern, professional aesthetic. The open-plan layout incorporates flexible workstations, meeting rooms, and collaborative zones to support various working styles.
+                    </p>
+                    <p>
+                        Strategic space planning ensures optimal natural light distribution, efficient traffic flow, and clear sight lines throughout the office. The design includes dedicated areas for focused work, team collaboration, casual meetings, and relaxation.
+                    </p>
+                    <p>
+                        Electrical infrastructure was carefully planned to support modern technology needs, including power outlets at every workstation, dedicated server room circuits, and energy-efficient LED lighting systems with smart controls.
+                    </p>
+                </div>
+
+                <h3 class="text-2xl font-bold mt-8 mb-4">Design Goals</h3>
+                <ul class="grid md:grid-cols-2 gap-3 text-gray-300">
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-yellow-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                        </svg>
+                        <span>Create flexible workspace for hybrid teams</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-yellow-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                        </svg>
+                        <span>Maximize natural light and views</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-yellow-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                        </svg>
+                        <span>Optimize electrical distribution efficiency</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-yellow-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                        </svg>
+                        <span>Support future technology upgrades</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-yellow-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                        </svg>
+                        <span>Incorporate sustainable design practices</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-yellow-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                        </svg>
+                        <span>Balance privacy with collaboration</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floor Plan Section -->
+    <section class="py-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-4xl font-bold mb-8 text-center">Floor Plan & Layout</h2>
+            <div class="bg-slate-800/50 border border-yellow-500/20 rounded-2xl p-8">
+                <div class="aspect-video bg-slate-700/50 rounded-xl flex items-center justify-center mb-6">
+                    <div class="text-center">
+                        <svg class="w-24 h-24 text-yellow-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v7a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v7a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 16a1 1 0 011-1h4a1 1 0 011 1v3a1 1 0 01-1 1H5a1 1 0 01-1-1v-3zM14 16a1 1 0 011-1h4a1 1 0 011 1v3a1 1 0 01-1 1h-4a1 1 0 01-1-1v-3z"/>
+                        </svg>
+                        <p class="text-gray-400">AutoCAD Floor Plan</p>
+                        <p class="text-sm text-gray-500 mt-2">(Floor plan would be displayed here)</p>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-4 gap-4">
+                    <div class="bg-slate-700/30 rounded-lg p-4">
+                        <h4 class="font-semibold mb-1 text-yellow-400">Open Workspace</h4>
+                        <p class="text-sm text-gray-400">35 workstations</p>
+                    </div>
+                    <div class="bg-slate-700/30 rounded-lg p-4">
+                        <h4 class="font-semibold mb-1 text-yellow-400">Meeting Rooms</h4>
+                        <p class="text-sm text-gray-400">4 conference areas</p>
+                    </div>
+                    <div class="bg-slate-700/30 rounded-lg p-4">
+                        <h4 class="font-semibold mb-1 text-yellow-400">Break Areas</h4>
+                        <p class="text-sm text-gray-400">2 relaxation zones</p>
+                    </div>
+                    <div class="bg-slate-700/30 rounded-lg p-4">
+                        <h4 class="font-semibold mb-1 text-yellow-400">Private Offices</h4>
+                        <p class="text-sm text-gray-400">6 executive rooms</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="py-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-4xl font-bold mb-8 text-center">Design Gallery</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="gallery-item rounded-xl overflow-hidden border border-yellow-500/30">
+                    <img src="tm2.jpg" 
+                         alt="Office View 1" 
+                         class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden border border-yellow-500/30">
+                    <img src="tm3.jpg" 
+                         alt="Office View 2" 
+                         class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden border border-yellow-500/30">
+                    <img src="tm4.jpg" 
+                         alt="Meeting Room" 
+                         class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden border border-yellow-500/30">
+                    <img src="tm5.jpg" 
+                         alt="Work Area" 
+                         class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden border border-yellow-500/30">
+                    <img src="tm6.jpg" 
+                         alt="Collaboration Zone" 
+                         class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden border border-yellow-500/30">
+                    <img src="tm7.jpg" 
+                         alt="Lighting Detail" 
+                         class="w-full h-64 object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Details -->
+    <section class="py-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <div class="bg-slate-800/50 border border-yellow-500/20 rounded-2xl p-8 md:p-12">
+                <h2 class="text-3xl font-bold mb-6">Technical Specifications</h2>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-yellow-400">Design Software</h3>
+                        <ul class="space-y-2 text-gray-300 text-sm">
+                            <li>• AutoCAD - Technical drawings</li>
+                            <li>• Revit - BIM coordination</li>
+                            <li>• DIALux - Lighting design</li>
+                            <li>• Excel - Load calculations</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-blue-400">Electrical Systems</h3>
+                        <ul class="space-y-2 text-gray-300 text-sm">
+                            <li>• 3-phase power distribution</li>
+                            <li>• UPS backup system</li>
+                            <li>• Category 6A data cabling</li>
+                            <li>• Smart lighting controls</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-green-400">Sustainability</h3>
+                        <ul class="space-y-2 text-gray-300 text-sm">
+                            <li>• LED lighting throughout</li>
+                            <li>• Occupancy sensors</li>
+                            <li>• Energy monitoring system</li>
+                            <li>• Daylight harvesting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 px-6 relative z-10">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="text-4xl font-bold mb-4">Need Office Space Design?</h2>
+            <p class="text-gray-400 mb-8">Let's create an efficient workspace for your team</p>
+            <div class="flex gap-4 justify-center flex-wrap">
+                <a href="tym.html#contact" class="bg-gradient-to-r from-yellow-500 to-orange-600 text-white px-8 py-3 rounded-full hover:shadow-lg hover:shadow-yellow-500/50 transition">
+                    Start Planning
+                </a>
+                <a href="tym.html#projects" class="border border-yellow-500 text-yellow-400 px-8 py-3 rounded-full hover:bg-yellow-500/10 transition">
+                    View More Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <button class="absolute top-8 right-8 text-white text-4xl hover:text-yellow-400 transition">&times;</button>
+        <img id="lightbox-img" src="" alt="">
+    </div>
+
+    <footer class="bg-slate-900 border-t border-yellow-500/20 py-8 px-6 relative z-10">
+        <div class="container mx-auto text-center">
+            <p class="text-gray-400">&copy; 2026 Engineering Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 3D Background
+        const canvas = document.getElementById('bg-canvas');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        camera.position.z = 5;
+
+        // Create cubes
+        const geometry = new THREE.BoxGeometry(1, 1, 1);
+        const material = new THREE.MeshPhongMaterial({
+            color: 0xfbbf24,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.4
+        });
+        
+        const cubes = [];
+        for(let i = 0; i < 3; i++) {
+            const cube = new THREE.Mesh(geometry, material);
+            cube.position.set((i - 1) * 3, 0, -2);
+            scene.add(cube);
+            cubes.push(cube);
+        }
+
+        const light = new THREE.PointLight(0xfbbf24, 1);
+        light.position.set(5, 5, 5);
+        scene.add(light);
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+            cubes.forEach((cube, i) => {
+                cube.rotation.x += 0.002 + i * 0.001;
+                cube.rotation.y += 0.003 + i * 0.001;
+            });
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Gallery Lightbox
+        const galleryItems = document.querySelectorAll('.gallery-item img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                lightbox.classList.add('active');
+                lightboxImg.src = item.src;
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+        }
+    </script>
+</body>
+</html>

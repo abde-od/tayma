@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interior Design Showroom - Project Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        .gallery-item {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.4);
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+        .spec-card {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1));
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+        .spec-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.6);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-gray-100">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-slate-900/95 backdrop-blur-md z-50 border-b border-blue-500/20">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="tym.html" class="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                    </svg>
+                    <span>Back to Portfolio</span>
+                </a>
+                <h1 class="text-xl font-bold">Interior Design Showroom</h1>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 3D Background -->
+    <canvas id="bg-canvas" class="fixed inset-0 w-full h-full z-0" style="pointer-events: none;"></canvas>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <div class="fade-in text-center mb-8">
+                <div class="inline-flex gap-2 mb-4">
+                    <span class="px-4 py-1 bg-blue-500/20 border border-blue-500/50 rounded-full text-blue-400 text-sm">Interior Design</span>
+                    <span class="px-4 py-1 bg-purple-500/20 border border-purple-500/50 rounded-full text-purple-400 text-sm">3D Modeling</span>
+                    <span class="px-4 py-1 bg-green-500/20 border border-green-500/50 rounded-full text-green-400 text-sm">Commercial</span>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text">
+                    Interior Design Showroom
+                </h1>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Modern electrical showroom design featuring innovative display solutions, smart lighting systems, and contemporary architectural elements
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Image -->
+    <section class="pb-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <div class="rounded-2xl overflow-hidden border border-blue-500/30 shadow-2xl shadow-blue-500/20">
+                <img src="p3.jpeg" 
+                     alt="Showroom Main View" 
+                     class="w-full h-auto">
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section class="py-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div class="spec-card rounded-xl p-6 text-center">
+                    <div class="text-3xl mb-2">📐</div>
+                    <h3 class="font-bold text-lg mb-2">Project Size</h3>
+                    <p class="text-gray-400">250 m² Showroom</p>
+                </div>
+                <div class="spec-card rounded-xl p-6 text-center">
+                    <div class="text-3xl mb-2">⏱️</div>
+                    <h3 class="font-bold text-lg mb-2">Duration</h3>
+                    <p class="text-gray-400">3 Months Design</p>
+                </div>
+                <div class="spec-card rounded-xl p-6 text-center">
+                    <div class="text-3xl mb-2">🏆</div>
+                    <h3 class="font-bold text-lg mb-2">Status</h3>
+                    <p class="text-gray-400">Completed 2026</p>
+                </div>
+            </div>
+
+            <div class="bg-slate-800/50 border border-blue-500/20 rounded-2xl p-8 md:p-12">
+                <h2 class="text-3xl font-bold mb-6">Project Overview</h2>
+                <div class="space-y-4 text-gray-300 leading-relaxed">
+                    <p>
+                        This cutting-edge showroom design represents a perfect blend of functionality and aesthetic appeal, created specifically for displaying electrical and smart home products in an engaging, modern environment.
+                    </p>
+                    <p>
+                        The design incorporates multiple display zones with optimized lighting to showcase products effectively. The curved architectural elements create visual interest while maintaining a professional atmosphere suitable for both retail customers and wholesale buyers.
+                    </p>
+                    <p>
+                        Key features include integrated LED lighting systems, modular display units that can be reconfigured based on product lines, and strategic use of color blocking to define different zones within the space.
+                    </p>
+                </div>
+
+                <h3 class="text-2xl font-bold mt-8 mb-4">Design Objectives</h3>
+                <ul class="space-y-3 text-gray-300">
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                        </svg>
+                        <span>Create an immersive shopping experience that highlights product features</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                        </svg>
+                        <span>Optimize traffic flow and product visibility across all display zones</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                        </svg>
+                        <span>Integrate smart lighting and display technology for dynamic presentations</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                        </svg>
+                        <span>Ensure flexibility for seasonal product rotations and promotional displays</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Gallery -->
+    <section class="py-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-4xl font-bold mb-8 text-center">Project Gallery</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="gallery-item rounded-xl overflow-hidden border border-blue-500/30">
+                    <img src="p3.jpeg" 
+                         alt="Gallery 1" 
+                         class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden border border-blue-500/30">
+                    <img src="p1.jpeg" 
+                         alt="Gallery 2" 
+                         class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden border border-blue-500/30">
+                    <img src="p4.jpeg" 
+                         alt="Gallery 3" 
+                         class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden border border-blue-500/30">
+                    <img src="p5.jpeg" 
+                         alt="Gallery 4" 
+                         class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden border border-blue-500/30">
+                    <img src="p6.jpeg" 
+                         alt="Gallery 5" 
+                         class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden border border-blue-500/30">
+                    <img src="p9.jpeg" 
+                         alt="Gallery 6" 
+                         class="w-full h-64 object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Details -->
+    <section class="py-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <div class="bg-slate-800/50 border border-blue-500/20 rounded-2xl p-8 md:p-12">
+                <h2 class="text-3xl font-bold mb-6">Technical Specifications</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-blue-400">Software Used</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li>• AutoCAD 2024 - Floor plans and technical drawings</li>
+                            <li>• 3ds Max - 3D modeling and visualization</li>
+                            <li>• V-Ray - Photorealistic rendering</li>
+                            <li>• Photoshop - Post-processing and presentations</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-purple-400">Key Features</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li>• Modular display systems</li>
+                            <li>• RGB ambient lighting</li>
+                            <li>• Interactive product demonstrations</li>
+                            <li>• Visitor guidance system</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <h3 class="text-xl font-bold mb-4 text-green-400">Materials & Finishes</h3>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-slate-700/30 border border-blue-500/20 rounded-lg p-4">
+                            <h4 class="font-semibold mb-2">Flooring</h4>
+                            <p class="text-sm text-gray-400">Light oak laminate with blue accent strips</p>
+                        </div>
+                        <div class="bg-slate-700/30 border border-blue-500/20 rounded-lg p-4">
+                            <h4 class="font-semibold mb-2">Walls</h4>
+                            <p class="text-sm text-gray-400">Smooth matte finish with textured accents</p>
+                        </div>
+                        <div class="bg-slate-700/30 border border-blue-500/20 rounded-lg p-4">
+                            <h4 class="font-semibold mb-2">Displays</h4>
+                            <p class="text-sm text-gray-400">Custom-built modular units with LED backlighting</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="py-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-4xl font-bold mb-8 text-center">Project Walkthrough</h2>
+            <div class="aspect-video rounded-2xl overflow-hidden border border-blue-500/30 shadow-2xl shadow-blue-500/20 bg-slate-800">
+                <div class="w-full h-full flex items-center justify-center">
+                    <div class="text-center">
+                        <svg class="w-24 h-24 text-blue-400 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/>
+                        </svg>
+                        <p class="text-gray-400">3D Walkthrough Video</p>
+                        <p class="text-sm text-gray-500 mt-2">(Video player would be embedded here)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 px-6 relative z-10">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="text-4xl font-bold mb-4">Interested in Similar Projects?</h2>
+            <p class="text-gray-400 mb-8">Let's discuss how I can bring your vision to life</p>
+            <div class="flex gap-4 justify-center flex-wrap">
+                <a href="tym.html#contact" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-full hover:shadow-lg hover:shadow-blue-500/50 transition">
+                    Get in Touch
+                </a>
+                <a href="tym.html#projects" class="border border-blue-500 text-blue-400 px-8 py-3 rounded-full hover:bg-blue-500/10 transition">
+                    View More Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <button class="absolute top-8 right-8 text-white text-4xl hover:text-blue-400 transition">&times;</button>
+        <img id="lightbox-img" src="" alt="">
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-blue-500/20 py-8 px-6 relative z-10">
+        <div class="container mx-auto text-center">
+            <p class="text-gray-400">
+                &copy; 2026 Engineering Portfolio. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // 3D Background Animation
+        const canvas = document.getElementById('bg-canvas');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        camera.position.z = 5;
+
+        // Particles
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 800;
+        const posArray = new Float32Array(particlesCount * 3);
+        
+        for(let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 10;
+        }
+        
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.02,
+            color: 0x3b82f6,
+            transparent: true,
+            opacity: 0.6
+        });
+        
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
+
+        // Lights
+        const light = new THREE.AmbientLight(0x3b82f6, 0.5);
+        scene.add(light);
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+            particlesMesh.rotation.y += 0.0005;
+            particlesMesh.rotation.x += 0.0003;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Gallery Lightbox
+        const galleryItems = document.querySelectorAll('.gallery-item img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                lightbox.classList.add('active');
+                lightboxImg.src = item.src;
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    document.querySelector(href)?.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

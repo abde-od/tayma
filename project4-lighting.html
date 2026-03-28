@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artistic Lighting Design - Project Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        .gallery-item {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(236, 72, 153, 0.4);
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-gray-100">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-slate-900/95 backdrop-blur-md z-50 border-b border-pink-500/20">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="tym.html" class="flex items-center space-x-2 text-pink-400 hover:text-pink-300 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                    </svg>
+                    <span>Back to Portfolio</span>
+                </a>
+                <h1 class="text-xl font-bold">Artistic Lighting Design</h1>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 3D Background -->
+    <canvas id="bg-canvas" class="fixed inset-0 w-full h-full z-0" style="pointer-events: none;"></canvas>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <div class="fade-in text-center mb-8">
+                <div class="inline-flex gap-2 mb-4">
+                    <span class="px-4 py-1 bg-pink-500/20 border border-pink-500/50 rounded-full text-pink-400 text-sm">Lighting Design</span>
+                    <span class="px-4 py-1 bg-purple-500/20 border border-purple-500/50 rounded-full text-purple-400 text-sm">Residential</span>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-pink-400 to-purple-400 text-transparent bg-clip-text">
+                    Artistic Lighting Design
+                </h1>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Creative lighting solutions for residential spaces with mood-setting capabilities and energy-efficient technology
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Image -->
+    <section class="pb-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <div class="rounded-2xl overflow-hidden border border-pink-500/30 shadow-2xl shadow-pink-500/20">
+                <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1200&h=700&fit=crop" 
+                     alt="Lighting Design" 
+                     class="w-full h-auto">
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section class="py-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div class="bg-gradient-to-br from-pink-500/10 to-purple-500/10 border border-pink-500/30 rounded-xl p-6 text-center hover:scale-105 transition">
+                    <div class="text-3xl mb-2">💡</div>
+                    <h3 class="font-bold text-lg mb-2">Lighting Zones</h3>
+                    <p class="text-gray-400">6 Independent Zones</p>
+                </div>
+                <div class="bg-gradient-to-br from-pink-500/10 to-purple-500/10 border border-pink-500/30 rounded-xl p-6 text-center hover:scale-105 transition">
+                    <div class="text-3xl mb-2">🎨</div>
+                    <h3 class="font-bold text-lg mb-2">Color Options</h3>
+                    <p class="text-gray-400">RGB Full Spectrum</p>
+                </div>
+                <div class="bg-gradient-to-br from-pink-500/10 to-purple-500/10 border border-pink-500/30 rounded-xl p-6 text-center hover:scale-105 transition">
+                    <div class="text-3xl mb-2">⚡</div>
+                    <h3 class="font-bold text-lg mb-2">Energy Saving</h3>
+                    <p class="text-gray-400">70% LED Efficiency</p>
+                </div>
+            </div>
+
+            <div class="bg-slate-800/50 border border-pink-500/20 rounded-2xl p-8 md:p-12">
+                <h2 class="text-3xl font-bold mb-6">Project Description</h2>
+                <div class="space-y-4 text-gray-300 leading-relaxed">
+                    <p>
+                        This innovative lighting design project transforms ordinary living spaces into dynamic environments through strategic use of modern LED technology and smart controls. The design emphasizes flexibility, allowing users to adjust lighting scenes based on time of day, activity, and mood.
+                    </p>
+                    <p>
+                        Key features include layered lighting approach combining ambient, task, and accent lighting to create depth and visual interest. RGB LED strips provide colorful accent lighting behind furniture and architectural features, while recessed spotlights deliver focused illumination where needed.
+                    </p>
+                    <p>
+                        The system integrates with smart home platforms, enabling voice control, scheduling, and automation. Preset scenes can be activated with a single command, instantly transforming the ambiance for different occasions - from bright and energizing for morning routines to warm and relaxing for evening relaxation.
+                    </p>
+                </div>
+
+                <h3 class="text-2xl font-bold mt-8 mb-4">Lighting Features</h3>
+                <ul class="grid md:grid-cols-2 gap-3 text-gray-300">
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-pink-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                        </svg>
+                        <span>Adjustable color temperature (2700K-6500K)</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-pink-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                        </svg>
+                        <span>Smart dimming for all zones</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-pink-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                        </svg>
+                        <span>Circadian rhythm lighting support</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-pink-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                        </svg>
+                        <span>Motion sensor integration</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-pink-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                        </svg>
+                        <span>Preset mood scenes</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-pink-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                        </svg>
+                        <span>Energy monitoring dashboard</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="py-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-4xl font-bold mb-8 text-center">Lighting Scenarios</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="gallery-item rounded-xl overflow-hidden border border-pink-500/30">
+                    <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&h=400&fit=crop" 
+                         alt="Evening Ambiance" 
+                         class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden border border-pink-500/30">
+                    <img src="https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=600&h=400&fit=crop" 
+                         alt="Accent Lighting" 
+                         class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden border border-pink-500/30">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop" 
+                         alt="Task Lighting" 
+                         class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden border border-pink-500/30">
+                    <img src="https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?w=600&h=400&fit=crop" 
+                         alt="Mood Lighting" 
+                         class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden border border-pink-500/30">
+                    <img src="https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?w=600&h=400&fit=crop" 
+                         alt="Bright Mode" 
+                         class="w-full h-64 object-cover">
+                </div>
+                <div class="gallery-item rounded-xl overflow-hidden border border-pink-500/30">
+                    <img src="https://images.unsplash.com/photo-1543071293-d91175d16e58?w=600&h=400&fit=crop" 
+                         alt="Relaxation Mode" 
+                         class="w-full h-64 object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specs -->
+    <section class="py-12 px-6 relative z-10">
+        <div class="container mx-auto max-w-6xl">
+            <div class="bg-slate-800/50 border border-pink-500/20 rounded-2xl p-8 md:p-12">
+                <h2 class="text-3xl font-bold mb-6">Technical Details</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-pink-400">Equipment Used</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li>• Philips Hue RGB LED strips</li>
+                            <li>• Smart recessed LED downlights</li>
+                            <li>• DMX512 lighting controller</li>
+                            <li>• Lutron dimmer switches</li>
+                            <li>• Motion and daylight sensors</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-purple-400">Software & Design</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li>• DIALux - Lighting calculations</li>
+                            <li>• Relux - Photometric analysis</li>
+                            <li>• Home Assistant - Automation</li>
+                            <li>• AutoCAD - Installation drawings</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 px-6 relative z-10">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="text-4xl font-bold mb-4">Ready to Illuminate Your Space?</h2>
+            <p class="text-gray-400 mb-8">Transform your home with artistic lighting design</p>
+            <div class="flex gap-4 justify-center flex-wrap">
+                <a href="tym.html#contact" class="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-3 rounded-full hover:shadow-lg hover:shadow-pink-500/50 transition">
+                    Get Started
+                </a>
+                <a href="tym.html#projects" class="border border-pink-500 text-pink-400 px-8 py-3 rounded-full hover:bg-pink-500/10 transition">
+                    More Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <button class="absolute top-8 right-8 text-white text-4xl">&times;</button>
+        <img id="lightbox-img" src="" alt="" class="max-w-90 max-h-90vh">
+    </div>
+
+    <footer class="bg-slate-900 border-t border-pink-500/20 py-8 px-6 relative z-10">
+        <div class="container mx-auto text-center">
+            <p class="text-gray-400">&copy; 2026 Engineering Portfolio</p>
+        </div>
+    </footer>
+
+    <script>
+        // 3D Background
+        const canvas = document.getElementById('bg-canvas');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.position.z = 5;
+
+        const geometry = new THREE.SphereGeometry(0.5, 32, 32);
+        const material = new THREE.MeshPhongMaterial({ color: 0xec4899, wireframe: true, transparent: true, opacity: 0.4 });
+        
+        const spheres = [];
+        for(let i = 0; i < 5; i++) {
+            const sphere = new THREE.Mesh(geometry, material);
+            sphere.position.set(Math.random() * 10 - 5, Math.random() * 10 - 5, Math.random() * 5 - 10);
+            scene.add(sphere);
+            spheres.push(sphere);
+        }
+
+        const light = new THREE.PointLight(0xec4899, 2);
+        light.position.set(5, 5, 5);
+        scene.add(light);
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+            spheres.forEach((sphere, i) => {
+                sphere.rotation.x += 0.002;
+                sphere.rotation.y += 0.003;
+                sphere.position.y += Math.sin(Date.now() * 0.001 + i) * 0.01;
+            });
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Gallery
+        const galleryItems = document.querySelectorAll('.gallery-item img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                lightbox.classList.add('active');
+                lightboxImg.src = item.src;
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+        }
+    </script>
+</body>
+</html>
