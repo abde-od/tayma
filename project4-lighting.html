@@ -37,6 +37,11 @@
         .lightbox.active {
             display: flex;
         }
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+        }
     </style>
 </head>
 <body class="bg-slate-900 text-gray-100">
@@ -81,9 +86,9 @@
     <section class="pb-12 px-6 relative z-10">
         <div class="container mx-auto max-w-6xl">
             <div class="rounded-2xl overflow-hidden border border-pink-500/30 shadow-2xl shadow-pink-500/20">
-                <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1200&h=700&fit=crop" 
+                <img src="tm15.jpeg" 
                      alt="Lighting Design" 
-                     class="w-full h-auto">
+                     class="w-full max-h-[70vh] object-cover object-center">
             </div>
         </div>
     </section>
@@ -173,34 +178,34 @@
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="gallery-item rounded-xl overflow-hidden border border-pink-500/30">
-                    <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&h=400&fit=crop" 
+                    <img src="tm14.jpeg" 
                          alt="Evening Ambiance" 
-                         class="w-full h-64 object-cover">
+                         class="w-full aspect-[4/3] object-cover object-center">
                 </div>
                 <div class="gallery-item rounded-xl overflow-hidden border border-pink-500/30">
-                    <img src="https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=600&h=400&fit=crop" 
+                    <img src="tm15.jpeg" 
                          alt="Accent Lighting" 
-                         class="w-full h-64 object-cover">
+                         class="w-full aspect-[4/3] object-cover object-center">
                 </div>
                 <div class="gallery-item rounded-xl overflow-hidden border border-pink-500/30">
-                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop" 
+                    <img src="tm16.jpeg" 
                          alt="Task Lighting" 
-                         class="w-full h-64 object-cover">
+                         class="w-full aspect-[4/3] object-cover object-center">
                 </div>
                 <div class="gallery-item rounded-xl overflow-hidden border border-pink-500/30">
-                    <img src="https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?w=600&h=400&fit=crop" 
+                    <img src="tm17.jpeg" 
                          alt="Mood Lighting" 
-                         class="w-full h-64 object-cover">
+                         class="w-full aspect-[4/3] object-cover object-center">
                 </div>
                 <div class="gallery-item rounded-xl overflow-hidden border border-pink-500/30">
-                    <img src="https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?w=600&h=400&fit=crop" 
+                    <img src="tm18.jpeg" 
                          alt="Bright Mode" 
-                         class="w-full h-64 object-cover">
+                         class="w-full aspect-[4/3] object-cover object-center">
                 </div>
                 <div class="gallery-item rounded-xl overflow-hidden border border-pink-500/30">
-                    <img src="https://images.unsplash.com/photo-1543071293-d91175d16e58?w=600&h=400&fit=crop" 
+                    <img src="tm19.jpeg" 
                          alt="Relaxation Mode" 
-                         class="w-full h-64 object-cover">
+                         class="w-full aspect-[4/3] object-cover object-center">
                 </div>
             </div>
         </div>
@@ -256,7 +261,7 @@
     <!-- Lightbox -->
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
         <button class="absolute top-8 right-8 text-white text-4xl">&times;</button>
-        <img id="lightbox-img" src="" alt="" class="max-w-90 max-h-90vh">
+        <img id="lightbox-img" src="" alt="" class="w-auto h-auto">
     </div>
 
     <footer class="bg-slate-900 border-t border-pink-500/20 py-8 px-6 relative z-10">
